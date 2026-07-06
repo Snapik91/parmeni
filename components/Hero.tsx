@@ -39,16 +39,16 @@ export default function Hero() {
         <div className="smoke" />
 
         <div className="embers">
-          {Array.from({ length: 35 }).map((_, i) => (
-            <span
-              key={i}
-              style={{
-                left: `${Math.random() * 100}%`,
-                animationDuration: `${4 + Math.random() * 6}s`,
-                animationDelay: `${Math.random() * 5}s`,
-              }}
-            />
-          ))}
+       {Array.from({ length: 35 }).map((_, i) => (
+  <span
+    key={i}
+    style={{
+      left: `${(i * 17) % 100}%`,
+      animationDuration: `${4 + (i % 6)}s`,
+      animationDelay: `${(i % 5) * 0.7}s`,
+    }}
+  />
+))}
         </div>
 
         <div className="icebear-glow" />
