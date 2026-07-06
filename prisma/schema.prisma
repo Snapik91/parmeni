@@ -1,0 +1,25 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Player {
+  id        Int      @id @default(autoincrement())
+  name      String
+  steamId   String   @unique
+  upid      String?
+  lastSeen  DateTime @default(now())
+  createdAt DateTime @default(now())
+}
+
+model ServerSnapshot {
+  id        Int      @id @default(autoincrement())
+  online    Boolean
+  players   Int
+  maxPlayers Int
+  ping      Int
+  createdAt DateTime @default(now())
+}
