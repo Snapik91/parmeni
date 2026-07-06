@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+.hero-bg {
+  filter: brightness(1.18) contrast(1.15) saturate(1.2);
+  animation: heroPulse 8s ease-in-out infinite;
+}
+
+@keyframes heroPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1.12) contrast(1.1) saturate(1.15);
+  }
+  50% {
+    transform: scale(1.03);
+    filter: brightness(1.25) contrast(1.2) saturate(1.25);
+  }
+}
+
+.smoke {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08), transparent 25%),
+    radial-gradient(circle at 70% 40%, rgba(255,255,255,0.06), transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(255,255,255,0.05), transparent 35%);
+  animation: smokeMove 18s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes smokeMove {
+  from {
+    transform: translateX(-3%) translateY(2%);
+  }
+  to {
+    transform: translateX(3%) translateY(-2%);
+  }
+}
+
+.embers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.embers span {
+  position: absolute;
+  bottom: -20px;
+  width: 4px;
+  height: 4px;
+  background: orange;
+  border-radius: 999px;
+  box-shadow: 0 0 12px orange;
+  animation: emberFly linear infinite;
+}
+
+@keyframes emberFly {
+  from {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh) translateX(80px);
+    opacity: 0;
+  }
+}
+
+.icebear-glow {
+  position: absolute;
+  right: 28%;
+  top: 28%;
+  width: 280px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(0, 180, 255, 0.22), transparent 65%);
+  animation: blueGlow 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.icetea-glow {
+  position: absolute;
+  right: 33%;
+  bottom: 18%;
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(0, 255, 80, 0.28), transparent 65%);
+  animation: greenGlow 2.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.crown-glow {
+  position: absolute;
+  right: 48%;
+  top: 17%;
+  width: 170px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(255, 190, 0, 0.35), transparent 70%);
+  animation: goldGlow 3.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.falko-glow {
+  position: absolute;
+  right: 7%;
+  top: 36%;
+  width: 180px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(90, 180, 255, 0.22), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.hero:hover .falko-glow {
+  opacity: 1;
+}
+
+@keyframes blueGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.75; }
+}
+
+@keyframes greenGlow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes goldGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.85; }
+}
