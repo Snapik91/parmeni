@@ -13,6 +13,7 @@ export default function Home() {
       <Features />
       <AboutServer />
       <ServerStatus />
+      <OnlinePlayers />
     </main>
   );
 }
