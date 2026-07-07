@@ -10,14 +10,20 @@
   },
   "dependencies": {
     "@prisma/client": "^6.19.3",
+    "leaflet": "^1.9.4",
+    "ml-matrix": "^6.13.0",
     "next": "16.2.10",
     "prisma": "^6.19.3",
     "rcon-client": "^4.2.5",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-leaflet": "^5.0.0",
+    "react-zoom-pan-pinch": "^4.0.3",
+    "recharts": "^3.9.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

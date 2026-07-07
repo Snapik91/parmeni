@@ -1,10 +1,20 @@
 import { NextResponse } from "next/server";
 import { SERVER } from "@/config/server";
 import { getOnlinePlayers } from "@/services/rcon";
+import { prisma } from "@/lib/prisma";
 
 export async function GET() {
   try {
     const online = await getOnlinePlayers();
+
+    await prisma.serverSnapshot.create({
+      data: {
+        online: true,
+        players: online.count,
+        maxPlayers: SERVER.maxPlayers,
+        ping: 18,
+      },
+    });
 
     return NextResponse.json({
       online: true,
@@ -16,9 +26,6 @@ export async function GET() {
       version: SERVER.version,
       ping: 18,
       restartIn: "02:15:43",
-      rcon: {
-        connected: true,
-      },
     });
   } catch (error) {
     return NextResponse.json({
